@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h1>1</h1>
+<p>Вам даны два отсортированных массива, оба из которых содержат только целые числа. Ваша задача — найти способ объединить их в один, отсортированный по возрастанию. Завершите функцию mergeArrays(arr1, arr2), где arr1 и arr2 — исходные отсортированные массивы.
+
+    Вам не нужно беспокоиться о проверке, так как arr1 и arr2 должны быть массивами с 0 или более целыми числами. Если и arr1, и arr2 пусты, просто верните пустой массив.
+
+    Примечание: arr1 и arr2 могут быть отсортированы в разном порядке. Также arr1 и arr2 могут иметь одинаковые целые числа. Удалить дубликаты в возвращаемом результате.</p>
+<pre>
+    * [1, 2, 3, 4, 5], [6, 7, 8, 9, 10] -> [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+
+* [1, 3, 5, 7, 9], [10, 8, 6, 4, 2] -> [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+
+* [1, 3, 5, 7, 9, 11, 12], [1, 2, 3, 4, 5, 10, 12] -> [1, 2, 3, 4, 5, 7, 9, 10, 11, 12]
+</pre>
+<h1>2</h1>
+<p>
+    Сейчас вам придется забыть, как складывать два числа.
+
+    Лучше всего это можно объяснить с помощью следующего мема:
+</p>
+<img src="https://i.ibb.co/Y01rMJR/caf.png">
+<h1>3</h1>
+<p>
+    Цвет играет важную роль в нашей жизни. Большинству из нас этот цвет нравится больше, чем другой. Специалисты по пользовательскому опыту считают, что определенные цвета имеют для нас определенное психологическое значение.
+
+    Вам дан двумерный массив, состоящий из цвета и его «общей» ассоциации в каждом элементе массива. Функция, которую вы напишете, должна возвращать цвет как «ключ» и ассоциацию как «значение».
+
+</p>
+<pre>
+    [["white", "goodness"], ["blue", "tranquility"]] ----- [{white:"goodness"},{blue:"tranquility"}]
+</pre>
+<h1>4</h1>
+<p>
+    Ваша задача — написать функцию, которая принимает два или более объектов и возвращает новый объект, объединяющий все входные объекты.
+
+    Все свойства входного объекта будут иметь только числовые значения. Объекты объединяются вместе, так что значения совпадающих ключей складываются вместе.
+</p>
+<pre>
+    const objA = { a: 10, b: 20, c: 30 }
+const objB = { a: 3, c: 6, d: 3 }
+combine(objA, objB) // Returns { a: 13, b: 20, c: 36, d: 3 }
+</pre>
+
+<h1>6</h1>
+<p>
+
+    Учитывая массив/список [] из n целых чисел, найти максимальную сумму троек в массиве без повторений.
+</p>
+<h1>7</h1>
+<p>Дана строка s. Вы должны вернуть другую строку, чтобы символы s с четным и нечетным индексом были сгруппированы, а группы разделены пробелами </p>
+<pre>"YCOLUE'VREER" ---- "YOU'RE CLEVER"</pre>
+<h1>8</h1>
+<pre>
+    Входными данными будет массив словарей.
+
+Возвращает значения в виде предложения, разделенного строками, в порядке целочисленного эквивалента их ключей (в порядке возрастания).
+
+Ключи не повторяются, и их диапазон равен -999 < key < 999. Ключи и значения словарей всегда будут строками и не будут пустыми.
+
+Пример
+Input:
+List = [
+        {'4': 'dog' }, {'2': 'took'}, {'3': 'his'},
+        {'-2': 'Vatsan'}, {'5': 'for'}, {'6': 'a'}, {'12': 'spin'}
+       ]
+
+Output:
+'Vatsan took his dog for a spin'
+</pre>
+<h1>9</h1>
+<pre>
+    Я отец трех замечательных сыновей. перед началом учебного года я пообещал им, что куплю велосипед тому,
+    кто принесет лучшие оценки в конце учебного года. пришло время выполнять обещания, и я рассчитываю на вас.
+
+У вас есть 3 объекта ввода (школьные дневники) со школьными предметами и оценками (1-10). Например:
+
+{
+  'algebra': 6,
+  'history': 8,
+  'physics': 9,
+  'geography': 2,
+  'chemistry': 9
+}
+</pre>
+<h1>13</h1>
+<pre>
+    Генератор псевдонимов
+
+Напишите функцию, nicknameGeneratorкоторая принимает имя строки в качестве аргумента и возвращает первые 3 или 4 буквы в качестве псевдонима.
+
+Если 3-я буква согласная, верните первые 3 буквы.
+
+nickname("Robert") //=> "Rob"
+nickname("Kimberly") //=> "Kim"
+nickname("Samantha") //=> "Sam"
+Если 3-я буква гласная, верните первые 4 буквы.
+
+nickname("Jeannie") //=> "Jean"
+nickname("Douglas") //=> "Doug"
+nickname("Gregory") //=> "Greg"
+</pre>
+<script>
+
+    //1
+    function mergeArrays(arr1, arr2) {
+        const arr3 = arr1.concat(arr2);
+        arr3.sort(function(a, b){return a - b});
+        const newSet = new Set(arr3); // => Set(6) { -1, 3, 9, -9, 100, -100 }
+        //https://learn.javascript.ru/map-set#set
+//new Set создаёт новую коллекцию, а нам нужен массив
+//воспользуемся методом Array.from(). Получаем:
+        const uniqueNumbers = Array.from(newSet); //
+        return uniqueNumbers;
+    }
+console.log(mergeArrays([1,3,5,7,9,11,12], [1,2,3,4,5,10,12]));
+
+
+    //2
+
+    function add(num1, num2) {
+        let str1=String(num1).split('').reverse();//переворот строки
+        let str2=String(num2).split('').reverse();
+        let maxStr=0;
+        let newStr=[];
+        if (str1.length>=str2.length){
+            maxStr=str1.length
+        } else maxStr=str2.length;
+        console.log('maxStr=',maxStr);
+        for (let i=0; i<maxStr;i++){
+            if (str1[i]==undefined  ){ str1[i]='0'}
+            if (str2[i]==undefined ){ str2[i]='0'}
+           newStr.push(+str1[i]+ +str2[i]);
+           console.log(newStr)
+        }
+        return newStr.reverse().join('');
+    }
+console.log(add(118,12))//1210
+
+
+    //3
+    function colourAssociation(array){
+        let newArr=[];
+        let newObj={};
+        let key,value;
+        for(let i=0;i<array.length;i++){
+            key = array[i][0];
+            value = array[i][1];
+            newObj[key]=value;
+            newArr[i]=newObj;
+            newObj={}
+        };
+        return newArr;
+    }
+    console.log(colourAssociation([["white", "goodness"], ["blue", "tranquility"]]));
+
+    //or
+//    function colourAssociation(array){
+//        var res = [];
+//        array.forEach(i => res.push({[i[0]]: i[1]}));
+//        return res;
+//    }
+
+    //4
+    const objA = { a: 10, b: 20, c: 30 };
+    const objB = { a: 3, c: 6, d: 3 };
+    const objC = { a: 5, d: 11, e: 8 };
+    const objD = { c: 3 };
+//    function combine(obj1,obj2) {
+//      if (Object.keys(obj1).length>=Object.keys(obj2).length){
+//          for (let i=0; i<Object.keys(obj1).length;i++){
+//              for (let j=0; j<Object.keys(obj1).length;j++){
+//              if (Object.keys(obj1[i])==Object.keys(obj2[j]){
+//
+//              }
+//                  }
+//          }
+//      }
+//    }
+
+
+    function combine() { //общий случай, когда не знаем сколько аргументов функции
+        var obj = {}
+
+        for (var i = 0; i < arguments.length; i++) {//arguments - это зарезервированная переменная
+            for (var key in arguments[i]) {
+                obj[key] = obj[key] ? obj[key] + arguments[i][key]: arguments[i][key]
+            }
+        }
+
+        return obj;
+    }
+//    console.log(combine(objA, objB));
+
+
+    //5 все ли простые множители является 2
+    function isPowerOfTwo(n){
+        while (n>1){
+            if (n%2==0) {
+                n = n/2;
+                console.log(n);
+            }
+
+        }
+        return true;
+    }
+    console.log(isPowerOfTwo(8));
+
+    //6
+    function maxTriSum(numbers) {
+        numbers.sort(function (a, b) {
+            return b - a
+        });
+        const newSet = new Set(numbers); // => Set(6) { -1, 3, 9, -9, 100, -100 }
+        //https://learn.javascript.ru/map-set#set
+//new Set создаёт новую коллекцию, а нам нужен массив
+//воспользуемся методом Array.from(). Получаем:
+        const newNumb = Array.from(newSet); //
+        return newNumb[0]+newNumb[1]+newNumb[2]
+    }
+    console.log(maxTriSum([3,2,6,8,2,3]))
+
+
+    //7
+    function sortMyString(s) {
+        let s1='';
+        let s2='';
+       for (let i=0;i<s.length;i++){
+           if (i%2==0){
+               s1+=s[i]
+           }
+           else s2+=s[i]
+       }
+        return s1+' '+s2;
+    }
+console.log(sortMyString("YCOLUE'VREER"));
+
+
+    //8
+    function sentence(List) {
+        return List
+                .sort((a, b) => Object.keys(a) - Object.keys(b))
+                .map((item) => Object.values(item))
+                .join(' ')
+
+    }
+        console.log(sentence([
+        {'4': 'dog' }, {'2': 'took'}, {'3': 'his'},
+        {'-2': 'Vatsan'}, {'5': 'for'}, {'6': 'a'}, {'12': 'spin'}
+    ]))
+
+    //9
+    function whoseBicycle(diary1, diary2, diary3) {
+        arr=['algebra','history','physics','geography','chemistry'];
+        let max1=0, max2=0, max3=0;
+       for(let i=0; i<5;i++){
+           if (diary1[arr[i]]>=diary2[arr[i]] || diary1[arr[i]]>=diary3[arr[i]]){
+              max1+=1;
+           }
+           if (diary2[arr[i]]>=diary1[arr[i]] || diary2[arr[i]]>=diary3[arr[i]]){
+               max2+=1;
+           }
+           if (diary3[arr[i]]>=diary1[arr[i]] || diary3[arr[i]]>=diary2[arr[i]]){
+               max3+=1;
+           }
+       }
+       console.log('max1=',max1);
+        console.log('max2=',max2);
+        console.log('max3=',max3);
+        if (max3>=max2 && max3>=max2){
+            return 'I need to buy a bicycle for my third son.'
+        }
+        if (max2>=max1&& max2>=max3){
+            return 'I need to buy a bicycle for my second son.'
+        }
+       if (max1>=max2&& max1>=max3){
+           return 'I need to buy a bicycle for my first son.'
+       }
+
+
+    }
+
+    // если лучший результат по сумме баллов то
+//    function whoseBicycle(diary1, diary2, diary3) {
+//        arr = ['algebra', 'history', 'physics', 'geography', 'chemistry'];
+//        let max1 = 0, max2 = 0, max3 = 0;
+//        let sum1 = 0, sum2 = 0, sum3 = 0;
+//        for (let i = 0; i < 5; i++) {
+//            sum1 += diary1[arr[i]];
+//            sum2 += diary2[arr[i]];
+//            sum3 += diary3[arr[i]];
+//
+//        }
+//        let newArr = [sum1, sum2, sum3]
+//        let maxrez = Math.max.apply(null, newArr);
+//        console.log('sum1=', sum1);
+//        console.log('sum2=', sum2);
+//        console.log('sum3=', sum3);
+//        if (maxrez == sum3) return 'I need to buy a bicycle for my third son.'
+//
+//        else if (maxrez == sum2) return 'I need to buy a bicycle for my second son.'
+//
+//        return 'I need to buy a bicycle for my first son.'
+//    }
+    console.log(whoseBicycle(
+        {
+            'algebra': 6,
+            'history': 7,
+            'physics': 8,
+            'geography': 9,
+            'chemistry': 10
+        },
+        {
+            'algebra': 8,
+            'history': 7,
+            'physics': 8,
+            'geography': 9,
+            'chemistry': 10
+        },
+        {
+            'algebra': 6,
+            'history': 5,
+            'physics': 5,
+            'geography': 9,
+            'chemistry': 10
+        }
+    ))
+
+
+
+    ///10  (7 задача)
+
+        function nbDig(n, d) {
+             let str='';
+             let sum=0;
+             for (let i=d;i<=n;i++){
+                 str+=String(i*i);
+             }
+             for (let i=0;i<str.length;i++){
+                 if (str[i]==d) sum+=1;
+             }
+             return sum;
+         }
+    console.log(nbDig( 10, 0));
+
+//11 Даны два целочисленных массива, где второй массив
+    // представляет собой перетасованный дубликат первого массива с отсутствующим одним элементом, найдите отсутствующий элемент.
+//    find_missing([1, 2, 2, 3], [1, 2, 3]) => 2
+//    find_missing([6, 1, 3, 6, 8, 2], [3, 6, 6, 1, 2]) => 8
+    function findMissing(arr1, arr2) {
+        arr1.sort(function (a, b) {
+            return a - b
+        })
+        arr2.sort(function (a, b) {
+            return a - b
+        })
+        for (let i = 0; i < arr1.length; i++) {
+            if (arr1[i] !== arr2[i]) {
+                return arr1[i]
+            }
+        }
+    }
+    console.log(findMissing([6, 1, 3, 6, 8, 2], [3, 6, 6, 1, 2]))
+
+//12
+//    Напишите функцию, которая возвращает только десятичную часть заданного числа.
+//
+//        Вам нужно обрабатывать только действительные числа, а не Infinity, NaNили подобные. Всегда возвращайте положительную десятичную часть.
+//
+//        Примеры
+//    getDecimal(2.4)  === 0.4
+//    getDecimal(-0.2) === 0.2
+
+    function getDecimal(n){
+        return Math.abs(n-Math.trunc(n)); // fix me
+    }
+
+
+    //13
+    function nicknameGenerator(name) {
+        let arr = ['a', 'e', 'o', 'i', 'y', 'u'];
+        let nikname=0;
+        console.log(arr.length)
+        if (name.length > 3) {
+            for (let i = 0; i < arr.length; i++) {
+                if (name[2] == arr[i]) {
+                    console.log(name[2])
+                    return name.slice(0, 4);
+                }
+            }
+            return name.slice(0, 3);
+
+        }else return "Error: Name too short"
+    }
+    console.log(nicknameGenerator("Jiamy"))
+
+    //or
+//    if (arr.indexOf(name[2]) != -1){
+//        return name.slice(0,4);
+//    };
+//    return name.slice(0,3);
+//    }
+</script>
+</body>
+</html>

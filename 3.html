@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h1>1</h1>
+<pre>
+    Напишите функцию, которая принимает строку и выводит строки из 1 и 0, где гласные становятся 1, а не гласные — 0.
+
+Должны быть включены все негласные, включая небуквенные символы (пробелы, запятые и т. д.).
+
+Примеры:
+
+vowelOne( "abceios" ) // "1001110"
+
+vowelOne( "aeiou, abc" ) // "1111100100"
+</pre>
+<h1>2</h1>
+<pre>
+    Некоторые люди были убиты!
+Вам удалось сузить круг подозреваемых до нескольких человек. К счастью, вы знаете всех, кого подозреваемые видели в день убийства.
+
+Задача.
+Дан словарь со всеми именами подозреваемых и всех, кого они видели в тот день, который может выглядеть так:
+
+{'James': ['Jacob', 'Bill', 'Lucas'],
+ 'Johnny': ['David', 'Kyle', 'Lucas'],
+ 'Peter': ['Lucy', 'Kyle']}
+а также список имен погибших людей:
+
+['Lucas', 'Bill']
+вернуть имя одного убийцы, в нашем случае, 'James'потому что он единственный человек, который видел и то, 'Lucas'и другое.'Bill'
+</pre>
+<h1>4</h1>
+<pre>
+    Задача
+Учитывая массив целых чисел , Найдите минимальную сумму , которая получается в результате суммирования каждого произведения двух целых чисел .
+
+Ввод >> Примеры вывода
+minSum({5,4,2,3}) ==> return (22)
+Объяснение :
+Минимальная сумма , полученная при суммировании каждого произведения двух целых чисел ,  5*2 + 3*4 = 22
+    minSum({12,6,10,26,3,24}) ==> return (342)
+Объяснение :
+Минимальная сумма , полученная при суммировании каждого произведения двух целых чисел ,  26*3 + 24*6 + 12*10 = 342
+minSum({9,2,8,7,5,4,0,6}) ==> return (74)
+Объяснение :
+Минимальная сумма , полученная при суммировании каждого произведения двух целых чисел ,  9*0 + 8*2 +7*4 +6*5 = 74
+
+</pre>
+<script>
+
+    //1
+    function vowelOne(s){
+        let arr = ['A', 'E', 'O', 'I', 'U'];
+        s=s.toUpperCase();
+        let rez='';
+        for (let i=0;i<s.length;i++){
+            if (arr.indexOf(s[i]) != -1){
+              rez+='1'
+            } else rez+='0'
+        }
+        return rez
+    }
+    console.log( vowelOne( "vowelOne" ))//"01010101"
+
+
+    //2
+    function killer(suspectInfo, dead) {
+        let key=Object.keys(suspectInfo);
+//        alert(key.length)//3
+        let sum=0;
+        for(let i=0;i<key.length;i++){
+            for (let j=0;j<dead.length;j++){
+                if  (suspectInfo[key[i]].indexOf(dead[j])!==-1) sum+=1;
+          }
+            if (sum==dead.length) return key[i];
+              }
+    }
+    console.log(killer(
+        { 'Johnny': ['David', 'Kyle', 'Lucas'],
+                          'James': ['Jacob', 'Bill', 'Lucas'],
+                        'Peter': ['Lucy', 'Kyle']},
+                        [ 'Bill']));
+
+    //or
+//    function killer(obj, arr) {
+//        for (const key in obj){
+//            let same = 0;
+//            for(let i = 0;i<arr.length;i++){
+//                if(obj[key].includes(arr[i])){
+//                    same++
+//                }
+//                if(same === arr.length){
+//                    return key
+//                }
+//            }
+//        }
+//    }
+
+    //3
+    function ArrowFunc(arr) {
+        return arr.map( el=>String.fromCharCode(el) ).join('');
+    }
+    console.log(ArrowFunc([84,101,115,116]));
+
+    //4
+    function minSum(arr) {
+        let sum=0;
+       arr=arr.sort((a,b)=> a-b);
+       for (let i=0;i<arr.length/2;i++){
+           sum+=arr[i]*arr[(arr.length-1)-i]
+       }
+       return sum
+    }
+    console.log(minSum([12,6,10,26,3,24]))
+</script>
+</body>
+</html>
